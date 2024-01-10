@@ -44,7 +44,7 @@ ngOnInit(): void {
 checkDataRecieved() {
   if (Object.values(this.checkSubsRecieved).every((item) => item === true)) {
     this.handleData()
-}
+  }
 }
 
 handleData() {
@@ -55,7 +55,7 @@ handleData() {
   });
 }
 
-updateRoleName(roleName: string) {
-  this.rolesService.updateRoles(this.roles).pipe().subscribe(res => console.log(res))
+  updateRoleName(roleName: string) {
+  this.rolesService.updateRoles(roleName).pipe().subscribe(res => console.log(res))
 }
 }

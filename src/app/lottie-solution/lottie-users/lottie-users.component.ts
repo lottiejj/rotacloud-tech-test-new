@@ -32,7 +32,6 @@ export class LottieUsersComponent implements OnInit {
         this.checkDataRecieved();
       }
     });
-    const userRoles : any[] = [];
     this.roleService.getRoles()
     .subscribe(roles => {
       this.roles = roles?.sort((a,b) => a.name.localeCompare(b.name))
@@ -44,22 +43,22 @@ export class LottieUsersComponent implements OnInit {
   }
 
 
-  updateUserName(userName: string) {
-    this.userService.updateUsers(this.users).pipe().subscribe(res => console.log(res))
+  updateUserName(user:string) {
+    this.userService.updateUsers(user).pipe().subscribe(res => console.log(res))
   }
 
 
   checkDataRecieved() {
-  if (Object.values(this.checkSubsRecieved).every((item) => item === true)) {
-    this.handleData()
-}
+    if (Object.values(this.checkSubsRecieved).every((item) => item === true)) {
+      this.handleData()
+    }
   }
 
   handleData() {
     let role;
     this.users.forEach(user => {
-     role = this.roles.filter(role => user.roles?.includes(role?.id))
-     this.usersWithFullRole.push({id: user.id, name: user.name, roles:role})
+      role = this.roles.filter(role => user.roles?.includes(role?.id))
+      this.usersWithFullRole.push({id: user.id, name: user.name, roles:role})
     })
   }
 }
