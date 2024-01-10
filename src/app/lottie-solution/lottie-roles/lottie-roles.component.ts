@@ -27,14 +27,14 @@ export class LottieRolesComponent implements OnInit {
 ngOnInit(): void {
   this.rolesService.getRoles().subscribe(res => {
     if (res) {
-      this.roles = res;
+      this.roles = res.sort((a,b) => a.name.localeCompare(b.name));
       this.checkSubsRecieved.roles = true;
       this.checkDataRecieved();
     }
   });
   this.userService.getUsers().subscribe(users => {
     if (users) {
-      this.users = users;
+      this.users = users.sort((a,b) => a.name.localeCompare(b.name));
       this.checkSubsRecieved.users = true;
       this.checkDataRecieved();
     }
