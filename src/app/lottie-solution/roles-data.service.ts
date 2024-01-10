@@ -9,18 +9,19 @@ import { Observable, map } from 'rxjs';
 export class RolesService implements OnInit {
     roles: RoleModel[] = [];
   constructor(private http: HttpClient) {
-    this.roles = [];
    }
 
    ngOnInit(): void {
     this.getRoles();
    }
 
-  getRoles(): RoleModel[] {
+  getRoles(): Observable<RoleModel[]> {
     const url : string = "https://custom.rotacloud.com/angular-challenge/roles.json"
-     this.http.get<RoleModel[]>(url).subscribe(res => {
-      this.roles = res
-     })
-     return this.roles;
+     return this.http.get<RoleModel[]>(url)
+}
+
+updateRoles(updatedList: RoleModel[]):Observable<RoleModel[]> {
+  const url : string = "https://custom.rotacloud.com/angular-challenge/roles.json"
+  return this.http.put<RoleModel[]>(url, updatedList, {headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}})
 }
 }

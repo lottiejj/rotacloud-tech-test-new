@@ -7,12 +7,14 @@ import { LottieUsersComponent } from './lottie-solution/lottie-users/lottie-user
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LottieRolesComponent } from './lottie-solution/lottie-roles/lottie-roles.component';
 
 export const routes: Routes = [
 	{ path: '', component: HomeComponent },
 	{ path: 'users', component: UsersComponent },
 	{ path: 'roles', component: RolesComponent },
 	{ path: 'lottie-users', component: LottieUsersComponent },
+	{ path: 'lottie-roles', component: LottieRolesComponent },
 
 ];
 

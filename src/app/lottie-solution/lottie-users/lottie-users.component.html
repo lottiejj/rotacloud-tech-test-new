@@ -5,16 +5,17 @@
 		<th>Name</th>
 		<th>Roles</th>
 	</thead>
-	<tr *ngFor="let user of users">
+	<tr *ngFor="let user of usersWithFullRole">
 		<td>
         {{user.id}}
         </td>
         <td>
         <input type="text"
-        [value]="user.name">
+        [(ngModel)]="user.name"
+        (ngModelChange)="updateUserName(user.name)">
     </td>
-    <td *ngFor="let role of roles">
-        <div class="tag" [style.background-color]="role.colour">
+    <td >
+        <div *ngFor="let role of user.roles" class="tag" [style.background-color]="role.colour">
       {{role.name}}
     </div>
     </td>

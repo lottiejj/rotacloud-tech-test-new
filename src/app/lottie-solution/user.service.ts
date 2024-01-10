@@ -16,11 +16,14 @@ export class UserService implements OnInit {
     this.getUsers();
    }
 
-  getUsers(): UserModel[] {
+  getUsers(): Observable<UserModel[]> {
     const url : string = "https://custom.rotacloud.com/angular-challenge/users.json"
-     this.http.get<UserModel[]>(url).subscribe(res => {
-      this.users = res
-     })
-     return this.users;
+    return this.http.get<UserModel[]>(url);
+  
+}
+
+updateUsers(updatedList: UserModel[]):Observable<UserModel[]> {
+  const url : string = "https://custom.rotacloud.com/angular-challenge/users.json"
+  return this.http.put<UserModel[]>(url, updatedList, {headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}})
 }
 }
